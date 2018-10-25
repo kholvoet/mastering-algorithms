@@ -91,41 +91,25 @@ public class Exercises01_01 {
 	private static void ex1_1_26() {
 		StdOut.println("Ex. 1.1.26");
 
-		count = 0;
-		StdOut.printf("binomial(10, 5, 0.25) = %.15f\n", binomial(10, 5, 0.25));
-		StdOut.println(count);
+		int n = 50;
 
-//		count = 0;
-//		StdOut.printf("binomial(20, 10, 0.25) = %.15f\n", binomial(20, 10, 0.25));
-//		StdOut.println(count);
-//
-//		count = 0;
-//		StdOut.printf("binomial(30, 15, 0.25) = %.15f\n", binomial(30, 15, 0.25));
-//		StdOut.println(count);
-		
-		count = 0;
-		StdOut.printf("improvedBinomial(10, 5, 0.25) = %.15f\n", improvedBinomial(10, 5, 0.25, new double[11][11]));
-		StdOut.println(count);
+		for (int i = 0; i < n + 1; ++i) {
+			count = 0;
+//			double b = binomial(n, i, 0.25);
+//			StdOut.printf("count = %d, binomial(%d, %d, 0.25) = %.15f\n", count, n, i, b);
 
-		count = 0;
-//		StdOut.printf("improvedBinomial(20, 10, 0.25) = %.15f\n", improvedBinomial(20, 10, 0.25, new double[21][21]));
-//		StdOut.println(count);
-//
-//		count = 0;
-//		StdOut.printf("improvedBinomial(30, 15, 0.25) = %.15f\n", improvedBinomial(30, 15, 0.25, new double[31][31]));
-//		StdOut.println(count);
-//
-//		count = 0;
-//		StdOut.printf("improvedBinomial(50, 22, 0.25) = %.15f\n", improvedBinomial(50, 22, 0.25, new double[51][51]));
-//		StdOut.println(count);
+			double c[][] = new double[n + 1][i + 1];
+			c[0][0] = 1;
+			for (int x = 0; x < n + 1; ++x)
+				for (int y = 0; y < i + 1; ++y)
+					c[x][y] = -2.0;
+			c[0][0] = 1;
 
-		count = 0;
-		StdOut.printf("improvedBinomial(50, 25, 0.25) = %.15f\n", improvedBinomial(50, 25, 0.25, new double[51][51]));
-		StdOut.println(count);
-		
-//		count = 0;
-//		StdOut.printf("improvedBinomial(50, 28, 0.25) = %.15f\n", improvedBinomial(50, 28, 0.25, new double[51][51]));
-//		StdOut.println(count);
+			 count = 0;
+			 double b = improvedBinomial(n, i, 0.50, c);
+			StdOut.printf("count = %d, improvedBinomial(%d, %d, 0.50) = %.15f\n", count, n, i, b);
+			
+		}
 	}
 
 	public static double binomial(int n, int k, double p) {
@@ -140,15 +124,13 @@ public class Exercises01_01 {
 	public static double improvedBinomial(int n, int k, double p, double precalc[][]) {
 		++count;
 
-		if ((n == 0) && (k == 0))
-			return 1.0;
-
 		if ((n < 0) || (k < 0))
 			return 0.0;
-		
-		if (precalc[n][k] == 0.0) {
-			precalc[n][k] = (1 - p) * improvedBinomial(n - 1, k, p, precalc)
-					- p * improvedBinomial(n - 1, k - 1, p, precalc);
+
+		if (precalc[n][k] <= -2.0) {
+			double Nminus1Kminus1 = improvedBinomial(n - 1, k - 1, p, precalc);
+			double Nminus1K = improvedBinomial(n - 1, k, p, precalc);
+			precalc[n][k] = (1 - p) * Nminus1K - p * Nminus1Kminus1;
 		}
 
 		return precalc[n][k];
