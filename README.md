@@ -16,7 +16,7 @@ At this time, this is 0.0.0 (pre-alpha). There is little to no code related to t
 * Gradle
 * Java 8
 * JUnit 4
-* <See TODO for Future Deps>
+* See TODO for Future Deps
   
 # TODO
 * Add external libraries and update Gradle
