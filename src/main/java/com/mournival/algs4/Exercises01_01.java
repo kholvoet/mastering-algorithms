@@ -91,24 +91,17 @@ public class Exercises01_01 {
 	private static void ex1_1_27() {
 		StdOut.println("Ex. 1.1.27");
 
-		int n = 50;
-
+		int n = 10;
+		double p = 0.5;
 		for (int i = 0; i < n + 1; ++i) {
 			count = 0;
-//			double b = binomial(n, i, 0.25);
-//			StdOut.printf("count = %d, binomial(%d, %d, 0.25) = %.15f\n", count, n, i, b);
+			double b = binomial(n, i, p);
+			StdOut.printf("count = %6d,         binomial(%d, %d, %.2f) = %.15f\n", count, n, i, p, b);
 
-			double c[][] = new double[n + 1][i + 1];
-			c[0][0] = 1;
-			for (int x = 0; x < n + 1; ++x)
-				for (int y = 0; y < i + 1; ++y)
-					c[x][y] = -2.0;
-			c[0][0] = 1;
+			count = 0;
+			b = improvedBinomial(n, i, p);
+			StdOut.printf("count = %6d, improvedBinomial(%d, %d, %.2f) = %.15f\n", count, n, i, p, b);
 
-			 count = 0;
-			 double b = improvedBinomial(n, i, 0.50, c);
-			StdOut.printf("count = %d, improvedBinomial(%d, %d, 0.50) = %.15f\n", count, n, i, b);
-			
 		}
 	}
 
@@ -121,19 +114,26 @@ public class Exercises01_01 {
 		return (1 - p) * binomial(n - 1, k, p) - p * binomial(n - 1, k - 1, p);
 	}
 
-	public static double improvedBinomial(int n, int k, double p, double precalc[][]) {
+	public static double improvedBinomial(int n, int k, double p) {
+		double memo[][] = new double[n + 1][k + 1];
+		for (int x = 0; x < n + 1; ++x)
+			for (int y = 0; y < k + 1; ++y)
+				memo[x][y] = -2.0;
+		memo[0][0] = 1;
+		return memoizedBinomial(n, k, p, memo);
+	}
+
+	private static double memoizedBinomial(int n, int k, double p, double memo[][]) {
 		++count;
 
 		if ((n < 0) || (k < 0))
 			return 0.0;
 
-		if (precalc[n][k] <= -2.0) {
-			double Nminus1Kminus1 = improvedBinomial(n - 1, k - 1, p, precalc);
-			double Nminus1K = improvedBinomial(n - 1, k, p, precalc);
-			precalc[n][k] = (1 - p) * Nminus1K - p * Nminus1Kminus1;
+		if (memo[n][k] < -1.0) {
+			memo[n][k] = (1 - p) * memoizedBinomial(n - 1, k, p, memo) - p * memoizedBinomial(n - 1, k - 1, p, memo);
 		}
 
-		return precalc[n][k];
+		return memo[n][k];
 	}
 
 }
