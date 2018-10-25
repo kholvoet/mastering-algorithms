@@ -1,4 +1,4 @@
-package com.mournival;
+package com.mournival.algs4;
 
 import edu.princeton.cs.algs4.BinarySearch;
 

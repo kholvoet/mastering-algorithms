@@ -1,4 +1,4 @@
-package com.mournival;
+package com.mournival.algs4;
 
 import org.junit.Test;
 
