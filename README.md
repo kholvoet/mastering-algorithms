@@ -20,5 +20,5 @@ At this time, this is 0.0.0 (pre-alpha). There is little to no code related to t
   
 # TODO
 * Add external libraries and update Gradle
-[Algorithms Course Libraries](https://github.com/kevin-wayne/algs4)
+  *[Algorithms Course Libraries](https://github.com/kevin-wayne/algs4)
 * Add data files [Data for Text](https://algs4.cs.princeton.edu/code/algs4-data.zip)
