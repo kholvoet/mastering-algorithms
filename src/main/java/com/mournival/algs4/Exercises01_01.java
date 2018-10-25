@@ -19,7 +19,7 @@ public class Exercises01_01 {
 		// ...
 		// Creative Problems
 		// ...
-		ex1_1_26();
+		ex1_1_27();
 
 	}
 
@@ -88,8 +88,8 @@ public class Exercises01_01 {
 		StdOut.println();
 	}
 
-	private static void ex1_1_26() {
-		StdOut.println("Ex. 1.1.26");
+	private static void ex1_1_27() {
+		StdOut.println("Ex. 1.1.27");
 
 		int n = 50;
 
