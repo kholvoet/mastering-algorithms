@@ -22,8 +22,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     compile 'edu.princeton.cs:algs4:1.0.3'
-	
->>>>>>> 2925c8971672a1b7738605050157106450db63b3
 }
 
 // In this section you declare where to find the dependencies of your project
