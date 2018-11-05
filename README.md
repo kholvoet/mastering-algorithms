@@ -17,8 +17,9 @@ At this time, this is 0.0.0 (pre-alpha). There is little to no code related to t
 * Java 8
 * JUnit 4
 * See TODO for Future Deps
+
+# Book Sections with (some) Exercises
+1-1
   
 # TODO
-* Add external libraries and update Gradle
-  * [Algorithms Course Libraries](https://github.com/kevin-wayne/algs4)
 * Add data files [Data for Text](https://algs4.cs.princeton.edu/code/algs4-data.zip)
