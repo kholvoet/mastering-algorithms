@@ -6,7 +6,7 @@ public class Exercises01_01 {
 
 	private static long count;
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		// Exercises
 		ex1_1_1();
 
@@ -33,6 +33,7 @@ public class Exercises01_01 {
 		StdOut.println();
 	}
 
+	@SuppressWarnings("unused")
 	private boolean ex1_1_5(double a, double lo, double hi) {
 		return lo < a && a < hi;
 	}

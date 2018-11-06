@@ -3,9 +3,9 @@ package com.mournival.algs4;
 import edu.princeton.cs.algs4.StdDraw;
 
 public class Exercise_01_31 {
+	
 
-
-    public static void main(String[] args) {
+   public static void main(String args[]) {
 
 //        int n = Integer.parseInt(args[0]);
         int n = 8;
@@ -14,8 +14,6 @@ public class Exercise_01_31 {
         double y_0 = 50;
 //            double p = Double.parseDouble(args[1]);
 //
-
-
         StdDraw.setXscale(0, 100);
         StdDraw.setYscale(0, 100);
 
