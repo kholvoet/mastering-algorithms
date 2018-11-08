@@ -1,33 +1,44 @@
 package com.mournival.algs4;
 
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Exercise_01_31 {
 
+    public Exercise_01_31() {
+        super();
+    }
 
     public static void main(String[] args) {
 
-//        int n = Integer.parseInt(args[0]);
-        int n = 8;
-        int r = 40;
-        double x_0 = 50;
-        double y_0 = 50;
-//            double p = Double.parseDouble(args[1]);
-//
+        //        int n = Integer.parseInt(args[0]);
+        //        double p = Double.parseDouble(args[1]);
+        int n = 64;
+        double p = 0.50;
 
+        int dim = 640;
+        StdDraw.setCanvasSize(dim, dim);
 
-        StdDraw.setXscale(0, 100);
-        StdDraw.setYscale(0, 100);
+        double c = dim / 2; // Center is (c,c)
 
-        StdDraw.circle(x_0, y_0, r);
+        StdDraw.setScale(0, 2 * (1 + c));
+//        StdDraw.circle(c, c, r);
+        StdDraw.setPenRadius(0.005);
 
-
+        int r = dim * 49 / 100;
         double alpha = 2.0 * Math.PI / n;
-        StdDraw.setPenRadius(0.05);
         for (int i = 0; i < n; ++i) {
             double theta = alpha * i;
-            StdDraw.point(x_0 + r * Math.cos(theta), y_0 + r * Math.sin(theta));
+            StdDraw.point(c + r * Math.cos(theta), c + r * Math.sin(theta));
+        }
 
+        StdDraw.setPenRadius(0.002);
+        for (int i = 0; i < n; i++) {
+            if (StdRandom.uniform() < p) {
+                double theta_0 = alpha * i;
+                double theta_1 = alpha * (i + 1);
+                StdDraw.line(c + r * Math.cos(theta_0), c + r * Math.sin(theta_0), c + r * Math.cos(theta_1), c + r * Math.sin(theta_1));
+            }
         }
     }
 }
