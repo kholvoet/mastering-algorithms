@@ -19,18 +19,16 @@ public class Exercise_01_31 {
 	private static final double DOT_SIZE = 0.05;
 	private static final Color LINE_COLOR = Color.gray;
 	private static final int CANVAS_SIZE = 1024;
-	private static double LINE_THICKNESS = 0.0002;
+	private static final double LINE_THICKNESS = 0.0002;
 
 	public static void main(String[] args) {
 		StdDraw.setCanvasSize(CANVAS_SIZE, CANVAS_SIZE);
-		
-		double center = CANVAS_SIZE / 2; // Circle Center is (c,c)
-		StdDraw.setScale(0, 2 * (1 + center));
-		// StdDraw.circle(c, c, r);
+		StdDraw.setScale(0, CANVAS_SIZE);
 		
 		int n = Integer.parseInt(args[0]);
 		double alpha = 2.0 * Math.PI / n;
 		int r = CANVAS_SIZE / 2 - 2;
+		double center = CANVAS_SIZE / 2; 
 		plotPoints(n, center, r, alpha);
 		
 		double p = Double.parseDouble(args[1]);
