@@ -38,7 +38,6 @@ public class Exercise_01_31 {
 	private static void plotLines(int n, double center, int r, double alpha, double p) {
 		StdDraw.setPenColor(LINE_COLOR);
 		StdDraw.setPenRadius(LINE_THICKNESS);
-		StdDraw.setPenColor(LINE_COLOR);
 
 		for (int i = 0; i < n; i++) {
 			for (int j = i + 1; j < n; ++j) {
